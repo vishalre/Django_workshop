@@ -1,0 +1,45 @@
+{% load static %}
+<html>
+    <head>
+        <title>Questions</title>
+        <style>
+            {% if q_no == 6 %}
+            #qtext:hover {
+                color: silver;
+            }
+            {% endif %}
+        </style>
+    </head>
+    <body style="overflow-y:visible">
+        <div id="meme_p" style="position:absolute;top:0">
+            <h1>Correct Answer</h1>
+            <img src="/static/memes/meme_p_{{ meme_no }}.jpg" height="100%" style="max-width:100%">
+            <button onclick="showquest()">Show question</button>
+        </div>
+        <div id="ques" style="position:absolute;top:0">
+            <h1>Question no. {{ q_no }}</h1>
+            <img src="/static/questions/{{ ques_img }}.jpg" height="100%" style="max-width:100%">
+            <p id="qtext" style="color:black;font-size:150%;">{{ ques_text }}</p>
+        </div>
+        <script>
+            meme = document.getElementById("meme_p");
+            ques = document.getElementById("ques");
+            qtext = document.getElementById("qtext");
+            ques.style.visibility = "hidden";
+            function showquest(){
+                meme.style.visibility = "hidden";
+                ques.style.visibility = "visible";
+            }
+            var qno = "{{ q_no }}";
+            if(qno == '0'){
+               showquest();
+            }
+            if(qno == '6'){
+                document.body.style.backgroundColor = "black";
+                qtext.addEventListener("hover", function(e){
+                    qtext.style.color = "silver";
+                });
+            }
+        </script>
+    </body>
+</html>

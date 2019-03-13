@@ -1,0 +1,42 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<html>
+    <head>
+        <title>Challengica</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    </head>
+    <body>
+      <div class="container">
+        <div class="jumbotron">
+
+
+        <h1>Welcome to Code Chain</h1>
+        <p>Please use Telnet for executing snippets of code</p>
+
+
+      </div>
+        <form method="POST" class="post-form">
+            {% csrf_token %}
+            <!-- {{ form|crispy }} -->
+            <div class="col-3">
+        {{ form.username|as_crispy_field }}
+      </div>
+      <div class="col-3">
+        {{ form.email|as_crispy_field }}
+      </div>
+              <div class="col-3">
+          {{ form.contact|as_crispy_field }}
+        </div>
+        <div class="col-3">
+          {{ form.year|as_crispy_field }}
+        </div>
+
+
+            <button type="submit" class="btn btn-success">Save</button>
+        </form>
+
+        </div>
+    </body>
+</html>
